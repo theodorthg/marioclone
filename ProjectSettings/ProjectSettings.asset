@@ -48,7 +48,7 @@ PlayerSettings:
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
-  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  m_StackTraceTypes: 000000000000000000000000000000000000000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   tizenShowActivityIndicatorOnLoading: -1
@@ -105,7 +105,7 @@ PlayerSettings:
   n3dsMicrophonePolicy: 1
   n3dsFmodLibrary: 0
   n3dsVSyncType: 0
-  n3dsStereoViewType: 1
+  n3dsStereoViewType: 3
   n3dsStereoSliderOffMode: 0
   ignoreAlphaClear: 0
   xboxOneResolution: 0
@@ -633,9 +633,9 @@ PlayerSettings:
   n3dsApplicationId: 0xFF3FF
   n3dsNetLibKey: 
   n3dsLargeAppKey: 
-  n3dsLongNamesLine1_0: 
-  n3dsLongNamesLine2_0: 
-  n3dsShortNames_0: 
+  n3dsLongNamesLine1_0: Mario  Clone
+  n3dsLongNamesLine2_0: Mario Clone
+  n3dsShortNames_0: Mario
   n3dsPublisherNames_0: 
   n3dsLongNamesLine1_1: 
   n3dsLongNamesLine2_1: 
@@ -741,5 +741,5 @@ PlayerSettings:
   projectName: marioclone
   organizationId: birkicht
   cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 0
+  enableNativePlatformBackendsForNewInputSystem: 1
   disableOldInputManagerSupport: 0

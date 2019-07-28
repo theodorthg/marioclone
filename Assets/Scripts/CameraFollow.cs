@@ -13,6 +13,8 @@ public class CameraFollow : MonoBehaviour {
 
     private float camWidth, camHeight, levelMinX, levelMaxX;
 
+	Camera cam;
+
 	// Use this for initialization
 	void Start () {
 		camHeight = Camera.main.orthographicSize * 2;
@@ -23,18 +25,19 @@ public class CameraFollow : MonoBehaviour {
 
 		levelMinX = leftBounds.position.x + leftBoundsWidth + (camWidth / 2);
 		levelMaxX = rightBounds.position.x - rightBoundsWidth - (camWidth / 2);
-
-
-
+		cam = GetComponent<Camera> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
+		Camera cam = Camera.current;
 		if (target) {
 			float targetX = Mathf.Max (levelMinX, Mathf.Min (levelMaxX, target.position.x));
 			float x = Mathf.SmoothDamp (transform.position.x, targetX, ref smoothDampVelocity.x, smoothDampTime);
 
-			transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+			transform.position = new Vector3(x, transform.position.y, transform.position.z);
+
+			// cam.backgroundColor = new Color (0, 0, 1,0.7f);
 		}
 
 	}

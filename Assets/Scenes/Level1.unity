@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 159418, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
       propertyPath: m_Name
-      value: leftBounds
+      value: rightBounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
@@ -260,7 +260,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 419640, guid: 1aa266f654a14452f8acaea49c88db74, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 419640, guid: 1aa266f654a14452f8acaea49c88db74, type: 2}
       propertyPath: m_LocalPosition.z
@@ -418,7 +418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 159418, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
       propertyPath: m_Name
-      value: rightBounds
+      value: leftBounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
@@ -932,8 +932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 832850679}
-  leftBounds: {fileID: 1179296406}
-  rightBounds: {fileID: 1393654096}
+  leftBounds: {fileID: 1393654096}
+  rightBounds: {fileID: 1179296406}
   smoothDampTime: 0.15
 --- !u!1001 &1788814841
 Prefab:
