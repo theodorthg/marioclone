@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
     public Transform rightBounds;
 
 	public float smoothDampTime = 0.15f;
-	private float smoothDampVelocity = 0.0f; //Vector3.zero; BeBi
+	private Vector3 smoothDampVelocity = Vector3.zero; // BeBi
 
     private float camWidth, camHeight, levelMinX, levelMaxX;
 
@@ -32,7 +32,7 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
 		if (target) {
 			float targetX = Mathf.Max (levelMinX, Mathf.Min (levelMaxX, target.position.x));
-			float x = Mathf.SmoothDamp (transform.position.x, targetX, ref smoothDampVelocity, smoothDampTime);
+			float x = Mathf.SmoothDamp (transform.position.x, targetX, ref smoothDampVelocity.x, smoothDampTime);
 
 			transform.position = new Vector3 (x, transform.position.y, transform.position.z);
 		}
