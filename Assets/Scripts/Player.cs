@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
 	public Vector2 velocity;
 	private bool walk, walk_left, walk_right, jump;
-	public LayerMask wallMask;
+	public LayerMask wallMask = 0; // muss im Player-Inspektor auf Default gesetzt werden.
 
 
 	// Use this for initialization
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour {
 			 * Je nachdem, ob eine Kollision stattfand, ändert sich die Position je nach Laufrichtung oder
 			 * sie bleibt an der Stelle, wo die Kollision stattfindet.
 			 */
-
 			pos = CheckWallRays (pos, scale.x); // BeBi
 		}
 
