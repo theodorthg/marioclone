@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 159418, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
       propertyPath: m_Name
-      value: rightBounds
+      value: leftBounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
@@ -418,7 +418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 159418, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
       propertyPath: m_Name
-      value: leftBounds
+      value: rightBounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
@@ -481,6 +481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 7, y: 0}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!4 &832850679 stripped
 Transform:
   m_PrefabParentObject: {fileID: 466550, guid: a2921b55bcf164853960c853662332ad, type: 2}
@@ -703,6 +706,35 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf1f0766c99f04c47afb988e39cfa5cf, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1336808227 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 133116, guid: 2701c414dca9549cea239933a6e195a3, type: 2}
+  m_PrefabInternal: {fileID: 1225499025}
+--- !u!61 &1336808229
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1336808227}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0.5, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!4 &1393654096 stripped
 Transform:
   m_PrefabParentObject: {fileID: 422988, guid: 0114cdacba174488c92aa1edf31baed1, type: 2}
@@ -878,8 +910,8 @@ Camera:
   m_GameObject: {fileID: 1749272178}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.2580558, g: 0.5267623, b: 0.9485294, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -932,8 +964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 832850679}
-  leftBounds: {fileID: 1393654096}
-  rightBounds: {fileID: 1179296406}
+  leftBounds: {fileID: 1179296406}
+  rightBounds: {fileID: 1393654096}
   smoothDampTime: 0.15
 --- !u!1001 &1788814841
 Prefab:
