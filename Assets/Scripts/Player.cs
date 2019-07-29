@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
 		bool input_right = Input.GetKey (KeyCode.RightArrow);
 
 		// Springen schon dann, wenn die Taste noch nicht losgelassen wurde.
-		bool jump_key = Input.GetKeyDown (KeyCode.Space);
+		bool jump_key = Input.GetKeyDown (KeyCode.UpArrow);
 
 		/*
 		bool input_left_joy = Input.GetButtonDown ("BUTTON_Y");

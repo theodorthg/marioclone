@@ -11,9 +11,9 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: THG
   productName: marioclone
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 2110ecfb252ae4f24936694116517dc8, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -252,7 +252,14 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 2110ecfb252ae4f24936694116517dc8, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
@@ -620,7 +627,7 @@ PlayerSettings:
   n3dsSaveDataMaxDirs: 4
   n3dsExtSaveDataMaxFiles: 64
   n3dsExtSaveDataMaxDirs: 16
-  n3dsTargetPlatform: 2
+  n3dsTargetPlatform: 3
   n3dsBuildCategory: 0
   n3dsOrcsDumpButton: 0
   n3dsRegion: 7
@@ -628,15 +635,15 @@ PlayerSettings:
   n3dsSaveDataSize: 2
   n3dsLogoStyle: 3
   n3dsDemoIndex: 1
-  n3dsTitle: GameName
+  n3dsTitle: MarioClone
   n3dsProductCode: 
   n3dsApplicationId: 0xFF3FF
   n3dsNetLibKey: 
   n3dsLargeAppKey: 
-  n3dsLongNamesLine1_0: Mario  Clone
+  n3dsLongNamesLine1_0: Mario Clone
   n3dsLongNamesLine2_0: Mario Clone
   n3dsShortNames_0: Mario
-  n3dsPublisherNames_0: 
+  n3dsPublisherNames_0: THG
   n3dsLongNamesLine1_1: 
   n3dsLongNamesLine2_1: 
   n3dsShortNames_1: 
