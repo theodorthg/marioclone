@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	public float jumpvelocity;
+	public float gravity;
 	public Vector2 velocity;
 	private bool walk, walk_left, walk_right, jump;
 	public LayerMask wallMask = 0; // muss im Player-Inspektor auf Default gesetzt werden.
+	public LayerMask floorMask; 
 
+	public enum PlayerState {
+		jumping,
+		idle,
+		walking
+	}
+
+	private PlayerState playerState = PlayerState.idle;
+	private bool grounded = false;
 
 	// Use this for initialization
 	void Start () {
-		
+		Fall ();  // wird erst später aufgerufen, bis Kollision implementiert ist.
 	}
 	
 	// Update is called once per frame
@@ -43,6 +54,31 @@ public class Player : MonoBehaviour {
 			 */
 			pos = CheckWallRays (pos, scale.x); // BeBi
 		}
+
+		if (jump && (playerState != PlayerState.jumping)) {
+			playerState = PlayerState.jumping;
+			velocity = new Vector2 (velocity.x, jumpvelocity);
+		}
+
+		/* Geschwindigkeit der y-Bewegung wird kontinuierlich vermindert durch 
+		 * die Gravitation, nachdem sie einmal beim Drücken der Jump-Taste 
+		 * auf die Sprung-Geschwindigkeit gesetzt wurde (wird im Inspektor initialisiert).
+		 * jumpvelocity auf 5 (x-velocity ist auf 7).
+		 * Unbdeingt auch gravity setzen (auf 65).
+		 * floorMask muss auf Default gesetzt werden, damit der Player nicht durch den 
+		 * Boden fällt.
+		 * Bereits zu Beginn würde das passieren, wenn wir Fall() direkt in Start() 
+		 * aufrufen würden. Daher erst mal auskommentiert.
+		 * Die z-Werte des Bodens und der Wände bleiben bei 27, weil sie sonst 
+		 * unsichtbar würden. 
+		 */
+		if (playerState == PlayerState.jumping) {
+			pos.y += velocity.y * Time.deltaTime;
+			velocity.y -= gravity * Time.deltaTime;
+		}
+
+		if (velocity.y <= 0)  // Wir sparen uns die Öffnenden und Schließenden Klammern
+			pos = CheckFloorRays (pos);
 
 		transform.localPosition = pos;
 		transform.localScale = scale;
@@ -86,6 +122,14 @@ public class Player : MonoBehaviour {
 
 	}
 
+	void Fall() {
+
+		// Player nach unten "ziehen". Springen ist = Fallen.
+		velocity.y = 0;
+		playerState = PlayerState.jumping;
+		grounded = false;
+
+	}
 
 	Vector3 CheckWallRays(Vector3 pos, float direction) {
 
@@ -136,4 +180,57 @@ public class Player : MonoBehaviour {
 		return pos;
 	}
 
+	Vector3 CheckFloorRays(Vector3 pos) {
+		/* Knapp innerhalb des Players ist die x-Position des Rays. Ebenso der y-Wert.
+		 * Ähnlich wie bei der Methode CheckWallRays().
+		 */
+		Vector2 originLeft = new Vector2 (pos.x - 0.5f + 0.2f, pos.y - 1f);
+		Vector2 originMiddle = new Vector2 (pos.x, pos.y - 1f);
+		Vector2 originRight = new Vector2 (pos.x + 0.5f - 0.2f, pos.y - 1f);
+
+		/* 
+		 * Vector2.down ist ein gleichwertig mit "new Vector2(0, -1)" und einfacher zu lesen
+		 */
+
+		RaycastHit2D floorLeft = Physics2D.Raycast (originLeft, Vector2.down, velocity.y * Time.deltaTime, floorMask);
+		RaycastHit2D floorMiddle = Physics2D.Raycast (originMiddle, Vector2.down, velocity.y * Time.deltaTime, floorMask);
+		RaycastHit2D floorRight = Physics2D.Raycast (originRight, Vector2.down, velocity.y * Time.deltaTime, floorMask);
+
+		if (floorLeft.collider != null || floorMiddle.collider != null || floorRight.collider != null) {
+
+			RaycastHit2D hitRay = floorRight;
+
+			if (floorLeft) {
+				hitRay = floorLeft;
+			} else if (floorMiddle) {
+				hitRay = floorMiddle;
+			} else if (floorMiddle) {
+				hitRay = floorMiddle;
+			} 
+
+			playerState = PlayerState.idle;
+			grounded = true;
+			velocity.y = 0;
+
+			/*
+			 * Quasi exakt oben auf einem Objekt landen, egal wo der hitRay getroffen hat.
+			 * Die Höhe des Players ist 2. Also 1 addieren. Durch 2 teilen, weil wir die
+			 * obere Stelle haben wollen.
+			 */
+			pos.y = hitRay.collider.bounds.center.y + hitRay.collider.bounds.size.y / 2 + 1;
+
+		} else {
+			
+			/* Nur wenn wir nicht fallen bzw. springen, wird Fall() aufgerufen.
+			 * Und das auch nur dann, wenn wir nichts nach unten hin berühren.
+			 * Da Fallen = Springen, muss man das so machen. Andernfalls würde
+			 * man mitten in einem Sprung stehen bleiben.
+			 */
+			if (playerState != PlayerState.jumping) {
+				Fall ();
+			}
+		}
+
+		return pos;
+	}
 }
